@@ -15,7 +15,7 @@ interface PostProps {
   workout: Iworkout[];
 }
 
-export default function Home({ workout }: PostProps) {
+export default function PageTraining({ workout }: PostProps) {
   const [isActive, setIsActive] = useState(false)
   const [typeTraining, setTypeTraining] = useState('')
   const router = useRouter()
