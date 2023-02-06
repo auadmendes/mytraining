@@ -3,8 +3,13 @@ import Head from 'next/head'
 import { getAllTraining, getTrainingBtType, Iworkout } from '../../lib/db'
 import { Router, useRouter } from 'next/router'
 
+
+
 import Avvvatars from 'avvvatars-react'
 import { useState } from 'react';
+import { WorkoutBox } from '../../components/WorkoutBox'
+import { Line, Profile, Training } from '../../components/styles'
+import { WorkoutContainer } from './styles'
 
 interface PostProps {
   workout: Iworkout[];
@@ -18,6 +23,10 @@ export default function Home({ workout }: PostProps) {
   function handleGetTraining(data: string) {
     //setTypeTraining('/api/workouts/C')
     router.push(`/training?workout=${data}`)
+  }
+
+  function handleCheckWorkingOnTraining() {
+    setIsActive(!isActive)
   }
 
   return (
@@ -41,13 +50,13 @@ export default function Home({ workout }: PostProps) {
           <option value="C">Training C</option>
         </select>
       </div>
-      <div className='w-auto min-w-40 h-[80%] p-4 m-4'>
+      <div className='w-auto m-4'>
         {workout.map(item => (
-          <div key={item.id}
-            className="shadow-lg rounded-xl w-72 md:w-96 p-4 bg-gray-50 relative overflow-hidden mt-2">
-            <input type="radio" id="html" name="fav_language" value="HTML" />
-            <a href="#" className="w-full h-full block">
-              <div className="flex items-center border-b-2 mb-2 py-2">
+          <div key={item.id}>
+            <WorkoutContainer variant={isActive} onClick={handleCheckWorkingOnTraining}>
+
+
+              <Profile>
                 <Avvvatars value={item.type} size={48} />
                 <div className="pl-3">
                   <div className="font-medium text-gray-500">
@@ -57,34 +66,15 @@ export default function Home({ workout }: PostProps) {
                     Personal. Jair
                   </div>
                 </div>
-              </div>
-              <div className="w-full">
-                <p className="text-gray-800 text-lg font-medium mb-2">
-                  Working On: <span className='text-blue-500'>{item.title}</span>
-                </p>
-                <p className="text-gray-300 text-sm font-medium mb-2">
-                  {item.description}
-                </p>
-                {/* <p className="text-blue-600 text-xs font-medium mb-2">
-                  Every Monday
-                </p> */}
-                {/* <p className="text-gray-400 text-sm mb-4">
-                  You’ve been coding for a while now and know your way around...
-                </p> */}
-              </div>
-              <div className="flex items-center justify-between my-2">
-                <p className="text-gray-300 text-sm">
-                  {item.times} times
-                </p>
-                <p className="text-gray-300 text-sm">
-                  {item.amount} repetitions
-                </p>
-              </div>
-              <div className="w-full h-2 bg-blue-200 rounded-full">
-                <div className="w-2/4 h-full text-center text-xs text-white bg-blue-600 rounded-full">
-                </div>
-              </div>
-            </a>
+
+              </Profile>
+              <Line />
+              <Training>
+                <h2>Workout: {item.title}</h2>
+                <span>{item.description}</span>
+              </Training>
+
+            </WorkoutContainer>
           </div>
         ))}
       </div>

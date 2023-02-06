@@ -40,6 +40,7 @@ export default function Home({ workout }: PostProps) {
           <option value="B">Training B</option>
           <option value="C">Training C</option>
         </select>
+
       </div>
       <div className='w-auto min-w-40 h-[80%] p-4 m-4'>
         {workout.map(item => (
@@ -54,7 +55,7 @@ export default function Home({ workout }: PostProps) {
                     Luciano Mendes
                   </div>
                   <div className="text-gray-600 text-sm">
-                    Personal. Jair
+                    Instrutor. Jair
                   </div>
                 </div>
               </div>

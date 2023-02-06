@@ -21,7 +21,7 @@ export async function getAllTraining(){
 }
 
 export async function getTrainingBtType(typeT: string){
-  console.log(typeT + '------')
+  //console.log(typeT + '------')
   const data = await prisma.workout.findMany({
     where: {
       type: typeT
