@@ -20,10 +20,15 @@ export const WorkoutContainer = styled.button<TrainingProps>`
  width: 100vw;
  border-radius: 8px;
 
- background-color: ${(props) => props.variant === true ? '#00FF00' : '#fff'};
+ //background-color: ${(props) => props.variant === true ? '#10FF00' : '#fff'};
 
- &[data-state='unchecked']:hover {
-    background: #ED008B; 
+ &:checked {
+  background-color: blue;
+ }
+ 
+
+ &[data-state='variant ==='] {
+  background-color: ${(props) => props.variant === true ? '#10FF00' : '#fff'};
  }
 
  &[data-state='checked'] {
