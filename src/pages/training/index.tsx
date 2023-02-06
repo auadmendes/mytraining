@@ -9,7 +9,7 @@ import Avvvatars from 'avvvatars-react'
 import { useState } from 'react';
 import { WorkoutBox } from '../../components/WorkoutBox'
 import { Line, Profile, Training } from '../../components/styles'
-import { WorkoutContainer } from './styles'
+import { WorkoutContainer } from '../../components/trainingStyles'
 
 interface PostProps {
   workout: Iworkout[];
